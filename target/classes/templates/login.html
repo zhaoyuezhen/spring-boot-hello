@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!-- thymeleaf 导入 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>登录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"
+	type="text/css"></link>
+<script type="text/javascript">
+	$(function() {
+	})
+</script>
+<body>
+	<!-- common 的 定义好的 header模板 引用  参数 title  -->
+	<!-- 
+	 Bootstrap的容器Class使用 
+	 container ：用于固定宽度并支持响应式布局的容器 
+	 container-fluid ：用于 100% 宽度，占据全部视口（viewport）的容器。
+	-->
+	<div class="container" th:replace="common :: header('login') "></div>
+	<div class="container">
+		<!--Bootstrap
+			.row:行控制  一行有12列
+			.clo-md-4:列控制 表示 占 4列
+			.md-offfset-4:向右侧偏移4
+		 -->
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Login</h3>
+					</div>
+					<div class="panel-body">
+						<form th:action="@{'/login'}" method="post" th:object="${userDto}">
+							<div class="form-group form-inline">
+								<label for="txtUserName" class="col-md-3 control-label"
+									style="text-align: right;">用户名</label>
+								<div class="col-md-9">
+									<input type="text" class="col-md-9 form-control" id="txtUserName"
+										placeholder="请输入用户名" th:field="*{userName}"
+										required="required" />
+								</div>
+							</div>
+							<div class="form-group form-inline" style="padding-top:45px">
+								<label for="txtUserPwd" class="col-sm-3 control-label"
+									style="text-align: right;">密码</label>
+								<div class="col-md-9">
+									<input type="password" class="col-sm-9 form-control" id="txtUserPwd"
+										placeholder="请输入密码" th:field="*{userPsw}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-3 col-md-9">
+									<div class="checkbox">
+										<label> <input type="checkbox" />请记住我
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-3 col-md-5">
+									<button class="btn btn-primary btn-block" type="submit" name="action"
+										value="login">登录</button>
+								</div>
+							
+							</div>
+							<div class="form-group">
+								<div class=" col-md-12" style="padding-top:15px">
+									<div class="alert alert-danger" th:if="${loginError}">
+										<strong>用户名或者用户密码不正确，请重新输入</strong>
+									</div>
+								</div>
+							</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- common 的 定义好的 fotter模板引用  无参  -->
+	<div class="container" th:replace="common :: footer"></div>
+</body>
+</head>
+</html>
