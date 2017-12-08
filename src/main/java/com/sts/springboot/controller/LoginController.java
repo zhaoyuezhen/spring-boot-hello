@@ -14,7 +14,7 @@ import com.sts.springboot.dto.UserDto;
 public class LoginController {
 	
 	//初期化
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 		UserDto userDto = new UserDto();
 		model.addAttribute("userDto",userDto);
@@ -22,7 +22,7 @@ public class LoginController {
 	}
 	
 	//登录
-	@RequestMapping(value = "/login",params="action=login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login",params="action=login", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "userName") String userName,
 			@RequestParam(value = "userPsw") String userPsw,Model model,RedirectAttributes redirectAttributes ) {
 		UserDto userDto = new UserDto();
@@ -35,6 +35,11 @@ public class LoginController {
 			return "login";
 		}
 	}
+    @RequestMapping("/loginError")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
+    }
 	@RequestMapping("/index")
 	public String welcomeIndex(@ModelAttribute("userName") String userName,Model model) {
 		model.addAttribute("userName",userName);

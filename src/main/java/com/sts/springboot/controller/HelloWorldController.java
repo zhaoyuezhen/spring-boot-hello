@@ -26,7 +26,7 @@ public class HelloWorldController {
 	}
 	
 
-	@RequestMapping(value = "/loginTest", method = RequestMethod.POST)
+	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public String loginTest(@RequestParam String inputStr, HttpServletRequest request) {
 		System.out.println(inputStr);
 		System.out.println(request.getParameter("inputInt"));

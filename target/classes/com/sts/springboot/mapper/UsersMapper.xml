@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sts.springboot.mapper.UsersMapper" >
+  <resultMap id="BaseResultMap" type="com.sts.springboot.dao.Users" >
+    <id column="user_id" property="userid" jdbcType="VARCHAR" />
+    <result column="login_id" property="loginid" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="display_name" property="displayname" jdbcType="SMALLINT" />
+    <result column="enabled" property="enabled" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from users
+    where userid = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sts.springboot.dao.Users" >
+    insert into users (user_id,login_id,password,display_name,enabled)
+    values (#{userid,jdbcType=VARCHAR}, #{loginid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{displayname,jdbcType=VARCHAR}, #{enabled,jdbcType=SMALLINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sts.springboot.dao.Users" >
+    update users
+    set user_id = #{userid,jdbcType=VARCHAR},
+      login_id = #{loginid,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      display_name = #{displayname,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=SMALLINT}
+    where user_id = #{user_id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select user_id,login_id,password,display_name,enabled
+    from users
+    where user_id = #{user_id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select user_id,login_id,password,display_name,enabled 
+    from users
+  </select>
+</mapper>
