@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.authentication.configurers
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.sts.springboot.service.AuthUserService;
 
@@ -16,13 +15,16 @@ import com.sts.springboot.service.AuthUserService;
 public class AuthConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity
-		   .authorizeRequests()
-           .anyRequest().authenticated()
+		httpSecurity.authorizeRequests()
+		.antMatchers("/login","/webjars/**","/css/**","/staic/**", "/js/**","/images/**").permitAll()
+		.antMatchers("/", "/login", "/pwd_change", "/login/getUsrName","/session_expired").permitAll()
            .and()
      .formLogin()
-           .loginPage( "/login")// 1
-           .permitAll();      //  2
+        .loginPage("/login")// 1
+        .defaultSuccessUrl("/index")
+		.usernameParameter("txtUserCd")
+		.passwordParameter("txtUserPwd")
+        .permitAll();      //  2
 		/*httpSecurity.authorizeRequests()
 				.antMatchers("/login","/webjars/**","/css/**", "/js/**", "/images/**").permitAll()
 				.antMatchers("/", "/login", "/pwd_change", "/login/getUsrName","/session_expired").permitAll()
@@ -59,6 +61,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 	
 	    @Override
 	    public void init(AuthenticationManagerBuilder auth) throws Exception {
+	    	//auth.inMemoryAuthentication().withUser("user").password("password");
 	        auth.userDetailsService(authUserService);
 	    }
 	}

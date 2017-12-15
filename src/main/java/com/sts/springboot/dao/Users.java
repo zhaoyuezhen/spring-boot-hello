@@ -1,6 +1,12 @@
 package com.sts.springboot.dao;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userId; 
 	private String loginId;
 	private String password;

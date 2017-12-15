@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 	<!-- Header -->
 	<div th:fragment="header(title)">
@@ -8,14 +8,45 @@
 			<h2>Guaishushu</h2>
 		</div>
 	</div>
-	
+
 	<!-- Footer -->
 	<div th:fragment="footer" class="navbar-fixed-bottom">
-		<div class="container text-center">
-			Copyright © GuaiShuShu
-		</div>
-		 
+		<div class="container text-center">Copyright © GuaiShuShu</div>
 	</div>
+	<!-- Menu -->
+	<div class="container-fluid" th:fragment="menu">
+		<div class="row" style="margin-top: -15px;">
+			<div class="col-md-2 form-inline">
+				<div class="row" style="margin: 0;">
+					<span class="clearfix"><BR /></span>
+				</div>
+				<div class="row pull-left" style="margin: 0;">
+					<div class="dropdown">
+						<a href="#" style="margin: 0;"
+							class="btn btn-primary  btn-lg btn-block" data-toggle="dropdown"
+							role="button" aria-expanded="false">
+							<h4 style="margin: 0;">
+								Menu <span class="caret"></span>
+							</h4>
+						</a>
+						<ul class="dropdown-menu multi-level" role="menu"
+							aria-labelledby="dropdownMenu">
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Auth</a>
+								<ul class="dropdown-menu">
+								<li><a tabindex="-1"
+										href="#" th:href="@{'/stow_inquiry'}">Test</a></li>
+									<li sec:authorize="hasRole('ROLE_USER')"><a tabindex="-1"
+										href="#" th:href="@{'/stow_inquiry'}">User</a></li>
+									<li sec:authorize="hasRole('ROLE_ADMIN')"><a tabindex="-1"
+										href="#" th:href="@{'/stow_inquiry'}">Admin</a></li>
+								</ul></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
 

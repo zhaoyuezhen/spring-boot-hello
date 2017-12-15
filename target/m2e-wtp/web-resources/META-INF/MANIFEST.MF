@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
-Implementation-Title: spring-boot-hello Maven Webapp
+Implementation-Title: spring-boot-hello
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: jnt-pc3
 Implementation-Vendor-Id: com.sts.springboot
 Build-Jdk: 1.8.0_144
-Implementation-URL: http://maven.apache.org
+Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-
+ hello/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

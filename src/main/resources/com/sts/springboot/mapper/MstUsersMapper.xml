@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sts.springboot.mapper.UsersMapper">
+<mapper namespace="com.sts.springboot.mapper.MstUsersMapper">
 	<resultMap id="BaseResultMap" type="com.sts.springboot.dao.Users">
-		<id column="user_id" property="userid" jdbcType="VARCHAR" />
-		<result column="login_id" property="loginid" jdbcType="VARCHAR" />
+		<id column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="login_id" property="loginId" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
-		<result column="display_name" property="displayname" jdbcType="SMALLINT" />
+		<result column="display_name" property="displayName" jdbcType="VARCHAR" />
 		<result column="enabled" property="enabled" jdbcType="VARCHAR" />
 	</resultMap>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -27,7 +27,7 @@
 		enabled = #{enabled,jdbcType=SMALLINT}
 		where user_id = #{user_id,jdbcType=VARCHAR}
 	</update>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+	<select id="selectByPrimaryKey" resultType="com.sts.springboot.dao.Users"
 		parameterType="java.lang.String">
 		select user_id,login_id,password,display_name,enabled
 		from mst_users
@@ -37,7 +37,7 @@
 		select user_id,login_id,password,display_name,enabled
 		from mst_users
 	</select>
-	<select id="selectAllAuthority" resultMap="String">
+	<select id="selectAllAuthority" resultMap="BaseResultMap">
 		select login_id,display_name,authority from mst_users as usr,mst_authorities as auth
 		where usr.user_id = auth.user_id
 		and login_id = = #{loginId,jdbcType=VARCHAR}

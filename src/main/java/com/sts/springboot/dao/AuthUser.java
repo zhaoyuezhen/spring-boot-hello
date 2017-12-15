@@ -1,4 +1,4 @@
-package com.sts.springboot;
+package com.sts.springboot.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;

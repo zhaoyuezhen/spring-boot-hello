@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.sts.springboot.dao.Users;
 
 @Mapper
-public interface UsersMapper {
+public interface MstUsersMapper {
     int deleteByPrimaryKey(String username);
 
     int insert(Users record);
