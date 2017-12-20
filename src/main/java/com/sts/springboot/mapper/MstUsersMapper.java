@@ -16,6 +16,6 @@ public interface MstUsersMapper {
 
     int updateByPrimaryKey(Users record);
     
-    String selectAllAuthority(String loginId);
+    String selectAuthorityByLoginId(String loginId);
     
 }

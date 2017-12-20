@@ -16,18 +16,19 @@ public class AuthUser implements UserDetails {
 	private String userId;
 	private String loginId;
 	private String password;
-
+	private String authorityKind;
 	public AuthUser(Users users) {
 		super();
 		this.userId = users.getUserId();
 		this.loginId = users.getLoginId();
 		this.password = users.getPassword();
+		this.authorityKind = users.getAuthorityKind();
 	}
 
 	@Override
 	public Collection<GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
-		list.add(new SimpleGrantedAuthority(userId));
+		list.add(new SimpleGrantedAuthority(authorityKind));
 		return list;
 	}
 
@@ -43,22 +44,22 @@ public class AuthUser implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return true;
 	}
 
 }

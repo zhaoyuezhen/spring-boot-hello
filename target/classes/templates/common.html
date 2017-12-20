@@ -4,17 +4,26 @@
 <body>
 	<!-- Header -->
 	<div th:fragment="header(title)">
-		<div>
-			<h2>Guaishushu</h2>
-		</div>
+			<div class="row">
+				<div class="col-md-1  text-center" >
+					<span class="nobr" style="font-size: large;">Guaishushu</span>
+				</div>
+				<div class="col-md-10" >
+				</div>
+				<div class="col-md-1 text-center">
+					<a href="logout.html" th:href="@{'/logout'}"> <span
+						class="nobr" style="font-size: large;">Logout</span>
+					</a>
+				</div>
+			</div>
 	</div>
 
 	<!-- Footer -->
-	<div th:fragment="footer" class="navbar-fixed-bottom">
-		<div class="container text-center">Copyright © GuaiShuShu</div>
+	<div  th:fragment="footer" class="navbar-fixed-bottom">
+		<div class="text-center">Copyright © GuaiShuShu</div>
 	</div>
 	<!-- Menu -->
-	<div class="container-fluid" th:fragment="menu">
+	<div class="container" th:fragment="menu">
 		<div class="row" style="margin-top: -15px;">
 			<div class="col-md-2 form-inline">
 				<div class="row" style="margin: 0;">
@@ -33,8 +42,7 @@
 							aria-labelledby="dropdownMenu">
 							<li class="dropdown-submenu"><a tabindex="-1" href="#">Auth</a>
 								<ul class="dropdown-menu">
-								<li><a tabindex="-1"
-										href="#" th:href="@{'/stow_inquiry'}">Test</a></li>
+									<li><a tabindex="-1" href="#" th:href="@{'/stow_inquiry'}">Test</a></li>
 									<li sec:authorize="hasRole('ROLE_USER')"><a tabindex="-1"
 										href="#" th:href="@{'/stow_inquiry'}">User</a></li>
 									<li sec:authorize="hasRole('ROLE_ADMIN')"><a tabindex="-1"
@@ -46,7 +54,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 </html>
 

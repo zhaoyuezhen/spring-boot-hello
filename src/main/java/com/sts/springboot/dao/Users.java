@@ -12,7 +12,7 @@ public class Users implements Serializable {
 	private String password;
 	private String displayName;
 	private String enabled;
-	
+	private String authorityKind;
 	
 	public String getUserId() {
 		return userId;
@@ -43,5 +43,11 @@ public class Users implements Serializable {
 	}
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
+	}
+	public String getAuthorityKind() {
+		return authorityKind;
+	}
+	public void setAuthorityKind(String authorityKind) {
+		this.authorityKind = authorityKind;
 	}
 }

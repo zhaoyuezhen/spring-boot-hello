@@ -9,13 +9,10 @@ import org.springframework.stereotype.Service;
 import com.sts.springboot.dao.AuthUser;
 import com.sts.springboot.dao.Users;
 import com.sts.springboot.mapper.MstUsersMapper;
-import com.sts.springboot.mapper.UsersMapper;
 
 @Service
 public class AuthUserService implements UserDetailsService{
 
-	@Autowired
-	UsersMapper usersMapper;
 	@Autowired
 	MstUsersMapper mstUsersMapper;
 	
@@ -27,10 +24,10 @@ public class AuthUserService implements UserDetailsService{
 		}
 		return new AuthUser(users);
 	}
-	public String getAllAuthority(String loginId ){
+	
+	public String getAuthorityByLoginId(String loginId ){
 		//Map<String,String> authKindMap = new HashMap<String,String>();
-		String auth = usersMapper.selectAllAuthority(loginId); 
+		String auth = mstUsersMapper.selectAuthorityByLoginId(loginId); 
 		return auth;
 	}
-		
 }

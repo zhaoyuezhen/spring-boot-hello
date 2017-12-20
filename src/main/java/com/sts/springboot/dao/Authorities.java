@@ -1,18 +1,18 @@
 package com.sts.springboot.dao;
 
 public class Authorities {
-	private String user_id;
+	private String userId;
 	private String authority;
-	private String permission_flag;
-	private String create_user;
-	private String create_date_time;
-	private String update_date_time;
+	private String permissionFlag;
+	private String createUser;
+	private String createDateTime;
+	private String updateDateTime;
 	
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getAuthority() {
 		return authority;
@@ -20,28 +20,29 @@ public class Authorities {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	public String getPermission_flag() {
-		return permission_flag;
+	public String getPermissionFlag() {
+		return permissionFlag;
 	}
-	public void setPermission_flag(String permission_flag) {
-		this.permission_flag = permission_flag;
+	public void setPermissionFlag(String permissionFlag) {
+		this.permissionFlag = permissionFlag;
 	}
-	public String getCreate_user() {
-		return create_user;
+	public String getCreateUser() {
+		return createUser;
 	}
-	public void setCreate_user(String create_user) {
-		this.create_user = create_user;
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
 	}
-	public String getCreate_date_time() {
-		return create_date_time;
+	public String getCreateDateTime() {
+		return createDateTime;
 	}
-	public void setCreate_date_time(String create_date_time) {
-		this.create_date_time = create_date_time;
+	public void setCreateDateTime(String createDateTime) {
+		this.createDateTime = createDateTime;
 	}
-	public String getUpdate_date_time() {
-		return update_date_time;
+	public String getUpdateDateTime() {
+		return updateDateTime;
 	}
-	public void setUpdate_date_time(String update_date_time) {
-		this.update_date_time = update_date_time;
+	public void setUpdateDateTime(String updateDateTime) {
+		this.updateDateTime = updateDateTime;
 	}
+	
 }
